@@ -7,7 +7,9 @@ const isTauri = typeof window !== 'undefined' && (window as any).__TAURI__;
 // Helper to safely access env variables across Vite and Next.js
 const getEnv = (name: string) => {
   if (typeof window !== 'undefined') {
-    return (import.meta as any).env?.[name] || (window as any).process?.env?.[name];
+    // @ts-ignore - import.meta is only available in ESM
+    const metaEnv = typeof import.meta !== 'undefined' ? (import.meta as any).env : undefined;
+    return metaEnv?.[name] || (window as any).process?.env?.[name];
   }
   return process.env[name];
 };
