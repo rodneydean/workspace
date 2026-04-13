@@ -12,6 +12,7 @@ import {
   Hash,
   Lock,
   ChevronDown,
+  Search,
 } from 'lucide-react';
 import { Button } from '../components/button';
 import { ScrollArea } from '../components/scroll-area';
